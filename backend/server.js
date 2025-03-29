@@ -6,7 +6,10 @@ const authRoutes = require('./routes/auth');
 const auth2Routes=require('./routes/restapi');
 const auth3Routes=require('./routes/connect');
 const app = express();
-app.use(cors())
+app.use(cors({
+  origin: "https://scholar-spend.vercel.app",
+  credentials:true
+}));
 app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Atlas connected'))
