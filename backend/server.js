@@ -6,9 +6,13 @@ const authRoutes = require('./routes/auth');
 const auth2Routes=require('./routes/restapi');
 const auth3Routes=require('./routes/connect');
 const app = express();
+// app.use(cors({
+//   origin: "https://scholar-spend.vercel.app",
+//   credentials:true
+// }));
 app.use(cors({
-  origin: "https://scholar-spend.vercel.app",
-  credentials:true
+  origin: true, // Reflects the request origin or allows all if undefined
+  credentials: true, // Required for cookies/auth headers
 }));
 app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
